@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style >
+    #main{
+      width: 500px;
+      margin: 10px auto;
+    }
+    .frame{
+      width: 100%;
+      height: 375px;
+      overflow: hidden;
+    }
+    .frame img{
+      width: 100%;
+
+    }
+    .desc{
+      width: 100%;
+      background: black;
+      color: white;
+    }
+    .desc p{
+      margin: 0;
+      padding: 5px;
+    }
+    .btnGroup{
+      margin-top: 10px;
+    }
+    .btnGroup button{
+      padding: 10px 20px;
+      background: black;
+      color: white;
+      border: 0;
+    }
+    .left{
+      float: left;
+    }
+    .right{
+      float: right;
+    }
+  </style>
+</head>
+<body>
+
+  <script>
+      var main = document.createElement("div");
+      main.setAttribute("id","main");
+      var frame = document.createElement("div");
+      frame.setAttribute("class","frame");
+      var desc = document.createElement("div");
+      desc.setAttribute("class","desc");
+      var btnGroup = document.createElement("div");
+      btnGroup.setAttribute("class","btnGroup");
+      document.body.appendChild(main);
+
+      document.getElementById("main").appendChild(frame);
+      document.getElementsByClassName("frame")[0].appendChild(document.createElement("img"));
+      document.getElementsByTagName("img")[0].src = "images/1.jpg";
+
+      document.getElementById("main").appendChild(desc);
+      document.getElementsByClassName("desc")[0].appendChild(document.createElement("p"));
+      document.getElementsByTagName("p")[0].innerHTML = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque quos, laborum quas, nesciunt quisquam nihil corrupti, sequi repellendus debitis dolor earum cumque vero recusandae dignissimos libero deleniti assumenda quo. Laudantium.";
+
+      document.getElementById("main").appendChild(btnGroup);
+      document.getElementsByClassName("btnGroup")[0].appendChild(document.createElement("button"));
+      document.getElementsByTagName("button")[0].innerHTML = "prev";
+      document.getElementsByTagName("button")[0].setAttribute("class","left");
+      document.getElementsByTagName("button")[0].setAttribute("onclick","prev()");
+      document.getElementsByClassName("btnGroup")[0].appendChild(document.createElement("button"));
+      document.getElementsByTagName("button")[1].innerHTML = "next";
+      document.getElementsByTagName("button")[1].setAttribute("class","right");
+      document.getElementsByTagName("button")[1].setAttribute("onclick","next()");
+
+
+
+
+      var imgArr = ["images/1.jpg","images/2.jpg","images/3.jpg","images/4.jpg","images/5.jpg"];
+      var descArr = ["Richard Stallman","Jade Raymond","Grace Hopper","Mark Zuckerberg","Wayne Gould"];
+
+      imgSource=document.getElementsByTagName('img')[0];
+      descSource=document.getElementsByTagName('p')[0];
+
+      imgSource.src=imgArr[0];
+      descSource.innerHTML=descArr[0];
+
+      count = 0;
+
+      function next(){
+        count++;
+        if (count == imgArr.length) {
+          count=0;
+        }
+        imgSource.src=imgArr[count];
+        descSource.innerHTML=descArr[count];
+      }
+
+      function prev(){
+        count--;
+        if (count<0) {
+          count=imgArr.length-1;
+        }
+        imgSource.src=imgArr[count];
+        descSource.innerHTML=descArr[count];
+      }
+
+  </script>
+</body>
+</html>
